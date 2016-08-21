@@ -1,3 +1,5 @@
+var refreshId = 0;
+
 function GetWeather(location) {
 
     $("#weatherTable").empty();
@@ -27,8 +29,9 @@ function GetWeather(location) {
 
             $("#weatherTable").append('<tr><td>'+ forecastDay.date +'</td> <td>	<span class="icon icon-record" color="'+ highType +'"> </span>'+ forecastDay.high +'</td> <td><span class="icon icon-record" color="'+ lowType +'"> </span>'+ forecastDay.low +'</td> <td>'+ forecastDay.text +'</td> ')
         });
-
-        setInterval(function() {UpdateAstronomy(longitude,latitude); },1000);
+        
+        clearInterval(refreshId);
+        refreshId = setInterval(function() {UpdateAstronomy(latitude, longitude); },1000);
       
     });
 };
@@ -66,18 +69,21 @@ function UpdateAstronomy(latitude, longitude) {
     if(currentTime < sunrise) {
         var duration = new moment.duration(sunrise - currentTime);
         $('#sunStageInfo').text("Sunrise: " + shortEnglishHumanizer(duration, { round: true })); 
+        return;
     }
 
     //After sunrise, before sunset
     if(currentTime >= sunrise && currentTime < sunset) {
         var duration = new moment.duration(sunset - currentTime);
         $('#sunStageInfo').text("Sunset: " + shortEnglishHumanizer(duration, { round: true }));
+        return;
     }
 
     //After sunset - before tomorrow sunrise
     if(currentTime >= sunset && currentTime < tomorrowSunrise) {
         var duration = new moment.duration(tomorrowSunrise - currentTime);
         $('#sunStageInfo').text("Sunrise: " + shortEnglishHumanizer(duration, { round: true }));
+        return;
     }
 
 }
