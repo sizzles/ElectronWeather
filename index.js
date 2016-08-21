@@ -1,7 +1,9 @@
 'use strict';
 const app = require('app')	// Module to control application life.
 const BrowserWindow = require('browser-window')	// Module to create native browser window.
-
+const suncalc = require('suncalc') //load suncalc
+const moment = require('moment') //moment for times
+const humanizeDuration = require('humanize-duration') //moment for times
 // report crashes to the Electron project
 //require('crash-reporter').start()
 

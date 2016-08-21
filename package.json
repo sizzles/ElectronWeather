@@ -24,12 +24,16 @@
   "dependencies": {
     "electron-debug": "^0.2.1",
     "photon": "github:connors/photon",
-    "jquery": "*"
+    "jquery": "*",
+    "moment": "*",
+    "suncalc": "*"
   },
   "devDependencies": {
     "electron-packager": "*",
     "electron-prebuilt": "^0.34.0",
-    "xo": "^0.9.0"
+    "xo": "^0.9.0",
+    "suncalc": "*",
+    "humanize-duration": "*"
   },
   "xo": {
     "esnext": true,

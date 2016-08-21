@@ -16,9 +16,11 @@
 			delete window.require;
 			delete window.exports;
 			delete window.module;
-		</script>
-<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
-
+		</script>	
+		<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+		<script type="text/javascript" src="node_modules/suncalc/suncalc.js"></script>
+		<script type="text/javascript" src="node_modules/moment/min/moment.min.js"></script>
+		<script type="text/javascript" src="node_modules/humanize-duration/humanize-duration.js"></script>
 		<script src="js/weather.js" charset="utf-8"></script>
 	</head>
 	<body onload="RegisterHandlers()">
@@ -42,6 +44,17 @@
 			<!-- Your app's content goes inside .window-content -->
 			<div class="window-content">
 				<div class="pane-group">
+
+					<div class="pane-sm sidebar" style="width:170px;"><!-- Side bar -->
+						<div class="toolbar" style="padding-left:1em; padding-top:0.3em; padding-bottom:0.3em;">
+							<span id="currentConditions" style="font-weight:bold">Currently</span>
+						</div>
+						<table class="table-striped" >
+							<tbody id="sideTable">
+								<tr><td id="sunStageInfo" "></td></tr>
+							</tbody>
+						</table>		
+					</div>
 					
 					<div class="pane"> <!-- forecast pane -->
 						<div class="toolbar" style="padding-left:1em; padding-top:0.3em; padding-bottom:0.3em;">
